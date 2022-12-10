@@ -1,7 +1,6 @@
 %:
-\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
-\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
-\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+\documentclass[11pt]{article} 	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage[a4paper, total={7.5in, 10.5in}]{geometry}
 %\geometry{landscape}                		% Activate for rotated page geometry
 %\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
 \usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
@@ -34,7 +33,7 @@
 \maketitle
 \tableofcontents
 \abstract{
-	We introduce a fundamentally novel computer vision methodology that can explore possibilities beyond traditional computer vision and end-to-end deep learning. Using just CPUs, it can develop prediction programs with equal or better accuracy,  efficiency and robustness, and full explainability. The effective computation needed in training is basically ignorable as opposed to that of deep learning.
+	We introduce a fundamentally novel computer vision methodology that can explore possibilities beyond traditional computer vision and end-to-end deep learning. Using just CPUs, it can develop prediction programs with equal or better accuracy,  efficiency and robustness, and full explainability. The effective computation needed in training is basically ignorable as opposed to that of deep learning. However, the paradigm is difficult to implement using existing programming languages, we invented a new general purpose programming language called Husky for this purpose.
 }
 
 \section{Introduction}
@@ -97,15 +96,44 @@ The core concern is that functions in $\mathcal{H}$ might not be a function easy
 
 \subsection{Rethinking Training}
 
-\section{Hypothesis Space}
+\subsection{Challenge of the New Paradigm}
 
-\section{Training}
+The primary challenges are
+
+\begin{itemize}
+	\item efficient geometric algorithms are not straightforward to code, prone to bug and corner cases
+	\item need to write system level code
+	\item need to write high level code for feature construction, possibly with automation, and even automation of automation
+	\item visualization of features, possibly over samples within a certain branch
+	\item fast iteration
+	\item large dataset
+	\item a strong type system that expresses feature, and feature composition
+\end{itemize}
+
+Current languages like python, C++, Rust are far from being able to satisfies the needs, which is one of the primary reasons why the paradigm hasn't been discovered yet.
+
+It's obvious that a new language is needed. It took two years for the Husky programming language to be created for this purpose.
 
 \section{Design of the Husky Programming Language}
 
 This deserves a separate long paper. But for the sake of logic completeness, we give a brief overview here.
 
 The language itself will be general purpose. But here we focus on its usage in computer vision.
+
+\subsection{syntax}
+
+\subsection{type system}
+
+\subsection{compilation and evaluation}
+
+\subsection{debugger}
+
+
+\section{MNIST}
+
+\section{ImageNet}
+
+
 
 \section{Detailed Comparison with Deep Learning}
 
@@ -119,6 +147,15 @@ The sketching algorithm generalizes easily to 3D, resulting in fundamentally nov
 
 \subsection{Go Beyond Computer Vision}
 
+\appendix
+
+\section{Proof Details}
+
+\section{Language Design Details}
+
+\section{Mnist Details}
+
+\section{ImageNet Details}
 
 \section{Contributions}
 
@@ -157,7 +194,6 @@ Sasha Rakhlin provides insights from learning theory. Fundamental machine learni
 
 Piotr Indyk provides insights from applied algorithms. The computation is inspired by LSH in the early days.
 
-\appendix
 
 
 
