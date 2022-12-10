@@ -14,7 +14,7 @@
 \theoremstyle{definition}
 \newtheorem*{defn}{Definition}
 \newtheorem*{prop}{Proposition}
-\newtheorem*{eg}{Example}
+\newtheorem*{example}{Example}
 \newtheorem*{thm}{Theorem}
 \newtheorem*{corol}{Corollary}
 \newtheorem{ex}{Exercise}[section]
@@ -33,17 +33,16 @@
 \begin{document}
 \maketitle
 \tableofcontents
-\abstract {
+\abstract{
 	We introduce a fundamentally novel computer vision methodology that can explore possibilities beyond traditional computer vision and end-to-end deep learning. Using just CPUs, it can develop prediction programs with equal or better accuracy,  efficiency and robustness, and full explainability. The effective computation needed in training is basically ignorable as opposed to that of deep learning.
 }
 
 \section{Introduction}
 
-The field of computer vision has achieved a lot of success primarily powered by deep learning. But what we get is still far from ideal.
+The field of computer vision has witnessed a lot of success primarily powered by deep learning. But what we get is still far from ideal.
 
 The argument is as follows: there exists statistical and computational difficulty in prediction in pattern recognition tasks in computer vision, but deep learning attempts to address both classes of problems using only statistical function fitting.
 
-For example, suppose we have a machine learning problem whose prediction is to see whether a noisy text input contains a certain regex pattern. The regex is unknown. So the statistical problem is to determine the regex and the computational problem will be to simplify the prediction computation. If one use transformers, there are no separate steps, there is only one fitting process.
 
 So inevitably, deep learning leads to overparametrized model, slow to predict and costly to train and demand a lot of data and is not robust due to not incorporating domain specific data.
 
@@ -53,12 +52,46 @@ For analysis of MNIST, see later sections.
 
 \section{A New Paradigm for Machine Learning}
 
-The typical setup of machine learning is like:
+The typical setup of machine learning theory states everything in mathematical terms.
+However, for many machine learning problem, especially those involved with pattern recognition, even the prediction(inference) involves nontrivial computation.
 
-first you have an input space $\mathcal{X}$ and output space $\mathcal{Y}$, and a class of functions from $\mathcal{X}$ to $\mathcal{Y}$. There is an unknown function $f_0:\mathcal{X}\to \mathcal{Y}$. There is a distribution $\mathcal{P}$ over $\mathcal{X}\times \mathcal{Y}$,
+So the difficulty is twofold: statistical and computational.
 
+What traditional machine learning and deep learning do is to solve problems of two different nature using statistical function fitting.
+This works in practice, but the model is slow, large, not robust, inexplainable, costly to train.
+
+We claim there are far better approaches.
+
+This section describe theoretically a new paradigm.
+We will explain how we reformulate machine learning setup in a way so that computational structure is captured.
+We will also present our solutions to the newly formulated problems, which combines the good of both the programming world and the machine learning world.
+
+The following sections will be about how it works in practice.
 
 \subsection{Computational Difficulties in Machine Learning}
+
+The typical setup of machine learning is like:
+
+first you have an input space $\mathcal{X}$ and output space $\mathcal{Y}$, and a set of functions $\mathcal{H}$ from $\mathcal{X}$ to $\mathcal{Y}$.
+There is an unknown function $f_0:\mathcal{X}\to \mathcal{Y}$.
+There is a distribution $\mathcal{P}$ over $\mathcal{X}$, and i.i.d samples $x_i$ with $y_i=f_0(x_i)$ according to $\mathcal{P}$.
+Then the problem is to choose an element in  $\mathcal{H}$ that best approximates this unknown function  $f_0$.
+
+The problem with this formulation is that everything is stated in mathematically terms without mentioning its computational information.
+
+The core concern is that functions in $\mathcal{H}$ might not be a function easy to compute, i.e. for $f\in \mathcal{H}$,
+ it might take significant to compute for a given $x$ the value of $f(x)$.
+
+\begin{example}[Digit One]
+\end{example}
+
+\begin{example}[Digit Zero]
+	Consider the loop space.
+\end{example}
+
+\begin{example}[Characters in General]
+	Consider the loop space.
+\end{example}
 
 \subsection{Rethinking Hypothesis Space}
 
