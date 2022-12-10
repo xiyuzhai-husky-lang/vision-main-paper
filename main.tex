@@ -1,0 +1,122 @@
+%:
+\documentclass[11pt, oneside]{article}   	% use "amsart" instead of "article" for AMSLaTeX format
+\usepackage{geometry}                		% See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   		% ... or a4paper or a5paper or ... 
+%\geometry{landscape}                		% Activate for rotated page geometry
+%\usepackage[parfill]{parskip}    		% Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}				% Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+								% TeX will automatically convert eps --> pdf in pdflatex		
+\usepackage{amssymb}
+\usepackage{diagbox}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\theoremstyle{definition}
+\newtheorem*{defn}{Definition}
+\newtheorem*{prop}{Proposition}
+\newtheorem*{eg}{Example}
+\newtheorem*{thm}{Theorem}
+\newtheorem*{corol}{Corollary}
+\newtheorem{ex}{Exercise}[section]
+{\theoremstyle{plain}
+\newtheorem*{rmk}{Remark}
+\newtheorem*{rmks}{Remarks}
+\newtheorem*{lt}{Last time}
+}
+\newtheorem*{lem}{Lemma}
+\usepackage{color}
+\usepackage{CJK}
+\title{Vision: A Programming Approach}
+\author{Xiyu Zhai, Jiang Xin, Jian Qian, Haochuan Li, Xiao Ma, Sasha Rakhlin, Piotr Indyk}
+\date{}							% Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\tableofcontents
+\abstract {
+	We introduce a fundamentally novel computer vision methodology that can explore possibilities beyond traditional computer vision and end-to-end deep learning. Using just CPUs, it can develop prediction programs with equal or better accuracy,  efficiency and robustness, and full explainability. The effective computation needed in training is basically ignorable as opposed to that of deep learning.
+}
+
+\section{Introduction}
+
+The field of computer vision has achieved a lot of success primarily powered by deep learning. But what we get is still far from ideal.
+
+The argument is as follows: there exists statistical and computational difficulty in prediction in pattern recognition tasks in computer vision, but deep learning attempts to address both classes of problems using only statistical function fitting.
+
+For example, suppose we have a machine learning problem whose prediction is to see whether a noisy text input contains a certain regex pattern. The regex is unknown. So the statistical problem is to determine the regex and the computational problem will be to simplify the prediction computation. If one use transformers, there are no separate steps, there is only one fitting process.
+
+So inevitably, deep learning leads to overparametrized model, slow to predict and costly to train and demand a lot of data and is not robust due to not incorporating domain specific data.
+
+For analysis of MNIST, see later sections.
+
+\section{Rethinking Machine Learning}
+
+The typical setup of machine learning is like:
+
+first you have an input space $\mathcal{X}$ and output space $\mathcal{Y}$, and a class of functions from $\mathcal{X}$ to $\mathcal{Y}$. There is an unknown function $f_0:\mathcal{X}\to \mathcal{Y}$
+
+\subsection{Rethinking Hypothesis Space}
+
+\subsection{Rethinking Training}
+
+\section{Design of the Husky Programming Language}
+
+This deserves a separate long paper. But for the sake of logic completeness, we give a brief overview here.
+
+The language itself will be general purpose. But here we focus on its usage in computer vision.
+
+\section{Detailed Comparison with Deep Learning}
+
+\section{Future}
+
+\subsection{Other Tasks in Computer Vision}
+
+One thing great about Husky is that it inherently does segmentation and detection even during classification tasks. So it would be easy to do them.
+
+The sketching algorithm generalizes easily to 3D, resulting in fundamentally novel shape analysis. So 3D tasks are doable too.
+
+\subsection{Go Beyond Computer Vision}
+
+
+\section{Contributions}
+
+This section is for listing individual contributions.
+
+Xiyu Zhai's contribution can be summarized as
+\begin{itemize}
+	\item line sketching algorithm and convex concave components and proof of its stability
+	\item theoretical formulation of the computational difficulty in prediction
+	\item the perspective of field vs particle
+	\item type theory for features
+	\item lazy feature computation
+	\item most of the design, implementation and maintenance of the Husky programming language
+	\item mnist, imagenet experiments
+	\item realization that decision list is better than decision tree
+\end{itemize}
+
+Jiang Xin's contribution can be summarized as
+\begin{itemize}
+	\item help with mnist, imagenet experiments
+\end{itemize}
+
+Jian Qian's contribution can be summarized as
+\begin{itemize}
+	\item clarify theoretical formulation
+\end{itemize}
+
+Haochuan Li's contribution can be summarized as
+\begin{itemize}
+	\item clarify theoretical formulation
+\end{itemize}
+
+Xiao Ma: TBA.
+
+Sasha Rakhlin provides insights from learning theory. Fundamental machine learning concepts still apply.
+
+Piotr Indyk provides insights from applied algorithms. The computation is inspired by LSH in the early days.
+
+\appendix
+
+
+
+\end{document}
