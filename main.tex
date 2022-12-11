@@ -10,6 +10,35 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{enumerate}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
 \theoremstyle{definition}
 \newtheorem*{defn}{Definition}
 \newtheorem*{prop}{Proposition}
@@ -49,7 +78,7 @@ For analysis of MNIST, see later sections.
 
 
 
-\section{A New Paradigm for Machine Learning}
+\section{A New Paradigm}
 
 The typical setup of machine learning theory states everything in mathematical terms.
 However, for many machine learning problem, especially those involved with pattern recognition, even the prediction(inference) involves nontrivial computation.
@@ -121,6 +150,14 @@ This deserves a separate long paper. But for the sake of logic completeness, we 
 The language itself will be general purpose. But here we focus on its usage in computer vision.
 
 \subsection{syntax}
+
+The syntax is pythonic.
+
+One can define a feature by
+\begin{lstlisting}[language=Python, caption=Python example]
+def a_feature -> i32:
+	1
+\end{lstlisting}
 
 \subsection{type system}
 
