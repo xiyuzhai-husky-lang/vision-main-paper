@@ -12,6 +12,7 @@
 \usepackage{enumerate}
 \usepackage{listings}
 \usepackage{xcolor}
+\usepackage{pythonhighlight}
 
 \definecolor{codegreen}{rgb}{0,0.6,0}
 \definecolor{codegray}{rgb}{0.5,0.5,0.5}
@@ -54,17 +55,40 @@
 \newtheorem*{lem}{Lemma}
 \usepackage{color}
 \usepackage{CJK}
-\title{Vision: A Programming Approach}
+\title{Vision: A Programming Approach (work in progress)}
 \author{Xiyu Zhai, Jiang Xin, Jian Qian, Haochuan Li, Xiao Ma, Sasha Rakhlin, Piotr Indyk}
 \date{}							% Activate to display a given date or no date
 
 \begin{document}
 \maketitle
-\tableofcontents
 \abstract{
-	Traditional feature engineering has been largely superseded by deep learning in many pattern recognition tasks in computer vision.
- However, we invent a new generalized feature engineering approach superior over deep learning in all aspects, accuracy, robustness, efficiency, explainability, maintainability. What one need for the new approach are only CPUs on one personal computer, zero GPUs, even for ImageNet. The core differences from traditional feature engineerrinig are: 1. a more appropriate geometric understanding for image pattern recognition; 2. a creation of a new programming language called Husky. The new geometric understanding shows the inherent flaw of deep learning and gives superior features. Husky is a new height in the evolution of programming language. It merges good designs from languages in different domains with a brand new paradigm we invented called Ascension, which greatly boosts programming efficiency for feature engineering, even making impossible possible. It comes with a debugging and visualization system tailored specifically for feature engineering, with no need to setup breakpoint, computation expandable as a timeless tree, from high level feature composition down to low level loops. Experiments show that it's as accurate as typical neural networks in MNIST and ImageNet, with inference 20 times faster for MNIST and 100 times faster for ImageNet. The approach is applicable for most tasks in computer vision. The programming language is even applicable for other AI domains, which will be the focus of future research.
+Traditional feature engineering has been largely superseded by deep learning in many pattern recognition tasks in computer vision. However, deep learning is still far from ideal. In fact, the perfect pattern recognition program that is accuracte, efficient, robust and explainable is not within its expressive power.
+
+We invent a new generalized feature engineering approach much closer to ideal than deep learning in all aspects, accuracy, robustness, efficiency, explainability, maintainability. What one need for the new approach are only CPUs on one personal computer, zero GPUs, even for ImageNet. The core differences from traditional feature engineerrinig are  a more appropriate geometric understanding for image pattern recognition and a creation of a new programming language called Husky.
+
+Accumulative ...
+
+Experiments show that it's as accurate as typical neural networks in MNIST and ImageNet, with inference 20 times faster for MNIST and 100 times faster for ImageNet. The approach is applicable for most tasks in computer vision. Accuracy is as ..., explainability is ..., robustness is ...
+
+The programming language is even applicable for other AI domains, which will be the focus of future research.
 }
+
+\mbox{}
+
+\textit{
+	This is work in progress and the list of authors is not exhaustive. It's open for collaboration. New collaborators will be added from time to time.}
+
+\textit{It dates back to more than five years ago, when Xiyu Zhai considers theoretically how to do computer vision. It has evolved into a mixture of theory, programming language, computer vision, system and machine learning.}
+
+\textit{The project already involves a huge amount of engineering, i.e. more than 2 years of a single PhD's dedicated work (without weekends of course). Yet another year of collaboration of a big team is needed for its completion. This draft is put on arXiv so that the project has a central reference. It will be frequently updated as we obtain new results. Also every member's contribution will be faithfully recorded.
+}
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
+
 
 \section{Introduction}
 
@@ -77,18 +101,42 @@ So inevitably, deep learning leads to overparametrized model, slow to predict an
 
 For analysis of MNIST, see later sections.
 
-\section{Notions}
-
-We shall use pattern recognition to mean the prediction process.
-
-What we do is not machine learning, but a more generalized feature engineering which includes machine learning as a subset.
-
 \section{Motivation}
 
-TODO
+\subsection{Inference Efficiency}
+
+\subsection{Robustness}
+
+\subsection{Interpretability}
+
+\subsection{Development Cost}
+
+\subsection{Labeling Cost}
+
+\subsection{Maintanence}
+
+\subsection{A Lack of Scientific Approach}
+
+Deep learning is an amazing, but it's anything but scientific, which is well known since the very beginning.
+
+We're not against usage of deep learning, but it's ridiculous that it's the only thing that works.
+
+Dominance by a non-scientific approach makes the whole field looks like the middle age.
+
+Ideally there should be a spectrum of methods, from scientific but slow to implement to non-scientific but quick to make demo. We've discovered one end of the spectrum, it's time to discover the other end.
+
+\section{Related Work}
+
+\subsection{Traditional Feature Engineering}
+
+\subsection{Bayesian}
+
+The Bayesian is roughly like that, one has 
+
+\subsection{Deep Learning Acceleration}
 
 
-\section{A New Paradigm}
+\section{Computational Difficulties in Prediction}
 
 The typical setup of machine learning theory states everything in mathematical terms.
 However, for many machine learning problem, especially those involved with pattern recognition, even the prediction(inference) involves nontrivial computation.
@@ -106,7 +154,6 @@ We will also present our solutions to the newly formulated problems, which combi
 
 The following sections will be about how it works in practice.
 
-\subsection{Computational Difficulties in Prediction}
 
 The typical setup of machine learning is like:
 
@@ -137,7 +184,7 @@ We take the convention that the fill of the digits is white and the background i
 The image is represented by a $[0,1]$-valued $28\times 28$ matrix $I=(I_{ij})_{0\le i\le 27, 0\le j\le 27}$.
 
 \begin{itemize}
-	\item  let's first consider how to describe an image of \textbf{digit one of the simplest kind}, which constitutes 95\% of all images of digit one.
+	\item \textbf{digit one of the simplest kind}, which constitutes 95\% of all images of digit one.
 
 A typical image looks like this:
 
@@ -162,7 +209,7 @@ In fact the function applies when $\gamma$ is any path, not necessarily a straig
 
 The dimensionality of the configuration space is 6, which can possibly be reduced to 5.
 
-\item now let's consider a harder case, \textbf{digit seven of the simplest kind}.
+\item \textbf{digit seven of the simplest kind}.
 
 A typical image looks like this:
 
@@ -174,7 +221,7 @@ The score function $\mathfrak{s}$ is the same.
 
 The dimensionality of the configuration space is 6, which can actually be reduced to 5.
 
-\item now let's consider a much harder case, \textbf{digit zero}.
+\item \textbf{digit zero}.
 
 We consider smooth curves $\gamma:[0,L]\to [0,1]^2$ with arc length parametrization such that the mean curvature is always nonnegative, i.e.
 \begin{equation}
@@ -213,11 +260,24 @@ Then the configuration space $\Gamma_G$ is a subset of $\Omega_G$ such that it i
 \end{itemize}
 \end{example}
 
-\subsection{Rethinking Hypothesis Space}
+\section{Reinvent Machine Learning}
+\subsection{Reinvent Hypothesis Space}
 
-\subsection{Rethinking Training}
+\subsection{Reinvent Training}
 
-\subsection{Challenge of the New Paradigm}
+\section{Domain Specifics for Image Classification}
+
+\subsection{Line Segment Sketching and Convex/Convex Components}
+
+\subsection{Three Families of Features}
+
+\subsection{Composition of Features}
+
+
+
+\section{Unprecedented Engineering Challenges}
+
+\subsection{Coding}
 
 The primary challenges are
 
@@ -235,34 +295,80 @@ Current languages like python, C++, Rust are far from being able to satisfies th
 
 It's obvious that a new language is needed. It took two years for the Husky programming language to be created for this purpose.
 
+\subsection{Static Analysis}
+
+\subsection{Compilation and Evaluation}
+
+\subsection{Debugging}
+
+
 \section{Design of the Husky Programming Language}
 
 This deserves a separate long paper. But for the sake of logic completeness, we give a brief overview here.
 
 The language itself will be general purpose. But here we focus on its usage in computer vision.
 
-\subsection{syntax}
+\subsection{Syntax}
 
 The syntax is pythonic.
 
 One can define a feature by
-\begin{lstlisting}[language=Python, caption=Python example]
-def a_feature -> i32:
-	1
+\begin{lstlisting}[language=Python]
+def feature_a:
+    1
 \end{lstlisting}
 
-\subsection{type system}
+or equivalently,
 
-\subsection{compilation and evaluation}
+\begin{lstlisting}[language=Python]
+feature_a = 1.
+\end{lstlisting}
 
-\subsection{debugger}
+Another feature can be defined based on it,
+
+\begin{lstlisting}[language=Python]
+def feature_b:
+    a_feature + 1
+\end{lstlisting}
+
+or equivalently
+
+\begin{lstlisting}[language=Python]
+feature_b = a_feature + 1
+\end{lstlisting}
+
+This will make the value of feature b on any input equal to the value of feature a plus 1.
+
+\subsection{Type System}
+
+The core invention is ascension.
+
+A type system can be seen as a category $\mathcal{C}$. Consider a functor $\mathcal{F}$ from $\mathcal{C}$ to another category $\mathcal{D}$,
+the functor also gives mappings from $Mor(X,Y)$ to $Mor(\mathcal{F}(X), \mathcal{F}(Y))$ for 
+
+An ascension is a collection of functors like these.
+
+\subsection{Compiler and Evaluator}
+
+\subsection{Debugger}
 
 
-\section{MNIST}
+\section{Results on MNIST}
 
-\section{ImageNet}
+\subsection{Overview}
+
+\subsection{Digit One}
 
 
+\section{Results on ImageNet}
+
+\subsection{Overview}
+
+\subsection{Husky Dog}
+
+\subsection{Samoyed Dog}
+
+\subsection{Piano}
 
 \section{Advantages over Pure Deep Learning}
 
@@ -291,13 +397,43 @@ The sketching algorithm generalizes easily to 3D, resulting in fundamentally nov
 
 \appendix
 
-\section{Proof Details}
+\section{Related Work Details}
+
+\section{Image Classification Domain Specific Details}
+
+\subsection{Line Sketch Algorithms}
+
 
 \section{Language Design Details}
 
 \section{Mnist Details}
 
+\subsection{Overview}
+
+
+\subsection{Digit One}
+
+\subsection{Digit Two}
+
+\subsection{Digit Three}
+
+\subsection{Digit Four}
+
+\subsection{Digit Five}
+
 \section{ImageNet Details}
+
+\subsection{Overview}
+
+\subsection{Husky}
+
+\subsection{}
+
+\subsection{Dog}
+
+\subsection{Cat}
+
+\subsection{Object}
 
 \section{Contributions}
 
