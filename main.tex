@@ -267,9 +267,24 @@ Then the configuration space $\Gamma_G$ is a subset of $\Omega_G$ such that it i
 \end{example}
 
 \section{A New Paradigm for Pattern Recognition }
+\subsection{Pattern Recognition VS Machine Learning}
+
 \subsection{Rethink Hypothesis Space}
 
+The ultimate goal for pattern recognition is to get an accurate efficient program which is inherently discrete.  The search space of program is computational expensive to explore.  For example, we can consider the space of all programs that can be described by N characters. The number of samples we need is proportional to N. But the size of the space to search is exponentially large making it impossible to directly search in space.  As a result, we have to find some rules to narrow the search space so that we can find an approximate solution to the problem in a limited time. 
+
+Machine learning theory narrows this search space down to a hypothesis space which is typically parametrized by a high dimensional vector space.  The parametrization must be "smooth" enough so that end-to-end optimization is possible.  So the hypothesis space is continuous.
+
+In fact, what traditional machine learning and deep learning does is to use a small subset that is approximately smooth.  This work in many cases if one only cares about accuracy and has access to a lot of data and computing resources.  
+
+
+
+
+\subsection{Feature Definition}
+
 \subsection{Rethink Training}
+
+
 
 \section{Domain Specifics for Image Classification}
 
