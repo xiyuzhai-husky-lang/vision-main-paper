@@ -60,6 +60,7 @@
 \date{}							% Activate to display a given date or no date
 
 \begin{document}
+\bibliographystyle{unsrt}
 \maketitle
 \abstract{
 Traditional feature engineering has been largely superseded by deep learning in many pattern recognition tasks in computer vision. However, tensor-based deep learning is still far from ideal. In fact, the perfect pattern recognition program that is accuracte, efficient, robust and explainable is not within its expressive power.
@@ -280,14 +281,12 @@ In short, pattern recognition is a way of identifying patterns in data, while ma
 
 The ultimate goal for pattern recognition is to get an accurate efficient program which is inherently discrete.  The search space of program is computational expensive to explore.  For example, we can consider the space of all programs that can be described by N characters. The number of samples we need is proportional to N. But the size of the space to search is exponentially large making it impossible to directly search in space.  As a result, we have to find some rules to narrow the search space so that we can find an approximate solution to the problem in a limited time. 
 
-Machine learning and deep learning targets on a search space that within a hypothesis space which is typically parametrized by a high dimensional vector space.  The parametrization must be "smooth" enough so that end-to-end optimization is possible.  So the hypothesis space is continuous.
+Machine learning and deep learning targets on a search space that within a continuous hypothesis space which is typically parametrized by a high dimensional vector space.  The parametrization must be "smooth" enough so that end-to-end auto-optimization is possible.  For example,, one can use gradient descent algorithm to optimize a machine learning model. However, the solution found by this method will be far from the optimal if the pattern recognition involves non-trivial computation.  
 
-In fact, what traditional machine learning and deep learning does is to use a small subset that is approximately smooth.  The solution found by this method will be far from the optimal if the pattern recognition involves non-trivial computation.  
-
-We will construct a hypothesis space that can be conveniently optimized in a human-in-the-loop manner.																																															
-
-
+Since the optimal computer program of AI is from a discrete hypothesis space where the hypothesis is constructed with characters of programming languages, we will construct a coding hypothesis space. A big challenge is that the  discrete coding hypothesis space is hard to be optimized automatically from mathematical. 
+%% We solve this problem in a human-in-the-loop manner.																																							
 \subsection{Feature Definition}
+In machine learning and pattern recognition, a feature is an individual measurable property or characteristic of a phenomenon\cite{bishop2006pattern}.
 
 \subsection{Rethink Training}
 
@@ -500,7 +499,7 @@ Sasha Rakhlin provides insights from learning theory. Fundamental machine learni
 
 Piotr Indyk provides insights from applied algorithms. The computation is inspired by LSH in the early days.
 
-
+\bibliography{mybib}
 
 
 \end{document}
