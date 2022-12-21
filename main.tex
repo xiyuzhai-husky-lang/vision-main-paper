@@ -288,8 +288,55 @@ Since the optimal computer program of AI is from a discrete hypothesis space whe
 \subsection{Feature Definition}
 In machine learning and pattern recognition, a feature is an individual measurable property or characteristic of a phenomenon\cite{bishop2006pattern}.
 
-\subsection{Rethink Training} 
+\subsection{Rethink Training}
 
+Let $x_i$ be a finite set of features, $f_i$ be morphisms,
+
+we use a growing sheet to search for good features.
+
+A sheet is a sequence of features $y_i$ such that each $y_i$ is a simple function call on previous $y$s.
+
+For example,
+
+\begin{verbatim}
+y_1 = x_1
+y_2 = f_5(x_1)
+y_3 = f_1(y_1, y_2)
+\end{verbatim}
+
+
+If $f_i$ are add(+) and multiply($\times$), then we can represent all polynomials.
+
+Of course, $f_i$ are not that simple.
+
+By growing sheet, we mean that we are going to add new members based on training data.
+
+Consider the possibilities of choice for $y_n$, it's a finite set, we can limit it to a small enough subset.
+
+In fact, if things are strongly typed, the choice is really small.
+
+The selection is based on a heuristics, which can be realized by firstly vectorize all $y_i$ and feeded it to a black box machine learning algorithm.
+
+We require something on maximum dependency depth.
+
+Then we finish by choosing the best one and pruning away unused features.
+
+Note that this amounts to search for multiple programs simultaneously because a sheet can be pruned to an exponential number of programs.
+
+This can be time consuming for large datasets, so we have to do localization, which is quite small actually.
+
+Filtering for example can effectively reduce any dataset to small ones.
+
+Note that the biggest advantage we have compared with theorem proving is that we have a good heuristics.
+
+There is a lot of system level consideration because some morphisms can be hard to compute.
+
+This as a whole can be seen as a morphism, we can use
+\begin{equation}
+	\text{sheet\_search}(u_1,u_2,..., u_i)
+\end{equation}
+
+to represent the result obtained by the above process with $u_1,...,u_i$ added into the set of $x_i$
 
 \section{Domain Specifics for Image Classification}
 
