@@ -60,6 +60,7 @@
 \date{}							% Activate to display a given date or no date
 
 \begin{document}
+\bibliographystyle{unsrt}
 \maketitle
 \abstract{
 Traditional feature engineering has been largely superseded by deep learning in many pattern recognition tasks in computer vision. However, tensor-based deep learning is still far from ideal. In fact, the perfect pattern recognition program that is accuracte, efficient, robust and explainable is not within its expressive power.
@@ -101,6 +102,20 @@ So inevitably, deep learning leads to overparametrized model, slow to predict an
 
 For analysis of MNIST, see later sections.
 
+\section{Related Work}
+
+\subsection{Traditional Feature Engineering}
+
+\subsection{Bayesian}
+
+The Bayesian is roughly like that, one has 
+
+\subsection{Deep Learning}
+
+\subsection{Deep Learning Acceleration}
+
+
+
 \section{Motivation}
 
 \subsection{Inference Efficiency}
@@ -125,18 +140,10 @@ Dominance by a non-scientific approach makes the whole field looks like the midd
 
 Ideally there should be a spectrum of methods, from scientific but slow to implement to non-scientific but quick to make demo. We've discovered one end of the spectrum, it's time to discover the other end.
 
-\section{Related Work}
-
-\subsection{Traditional Feature Engineering}
-
-\subsection{Bayesian}
-
-The Bayesian is roughly like that, one has 
-
-\subsection{Deep Learning Acceleration}
 
 
-\section{Computational Difficulties in Prediction}
+
+\section{Non-Trivial Computation  in Pattern Recognition}
 
 The typical setup of machine learning theory states everything in mathematical terms.
 However, for many machine learning problem, especially those involved with pattern recognition, even the prediction(inference) involves nontrivial computation.
@@ -259,12 +266,30 @@ Then the configuration space $\Gamma_G$ is a subset of $\Omega_G$ such that it i
 \end{equation}
 \end{itemize}
 \end{example}
+  
+\section{A New Paradigm for Pattern Recognition }
+\subsection{Pattern Recognition VS Machine Learning}
 
-\section{Reinvent Machine Learning}
-\subsection{Reinvent Hypothesis Space}
-\subsection{Feature}
+Pattern recognition is the process of recognizing patterns in data. It involves identifying patterns in data and using those patterns to classify or categorize the data. Pattern recognition can be used to identify trends, make predictions, or classify data into different categories.
 
-\subsection{Reinvent Training}
+Machine learning, on the other hand, is a type of artificial intelligence that allows systems to learn and improve their performance over time, without explicitly being programmed. Machine learning algorithms analyze data and use statistical techniques to find patterns and relationships in the data. These algorithms can then be used to make predictions or take actions based on the patterns they have identified.
+
+In short, pattern recognition is a way of identifying patterns in data, while machine learning is a way of using those patterns to make predictions or take actions.
+
+
+\subsection{Rethink Hypothesis Space}
+
+The ultimate goal for pattern recognition is to get an accurate efficient program which is inherently discrete.  The search space of program is computational expensive to explore.  For example, we can consider the space of all programs that can be described by N characters. The number of samples we need is proportional to N. But the size of the space to search is exponentially large making it impossible to directly search in space.  As a result, we have to find some rules to narrow the search space so that we can find an approximate solution to the problem in a limited time. 
+
+Machine learning and deep learning targets on a search space that within a continuous hypothesis space which is typically parametrized by a high dimensional vector space.  The parametrization must be "smooth" enough so that end-to-end auto-optimization is possible.  For example,, one can use gradient descent algorithm to optimize a machine learning model. However, the solution found by this method will be far from the optimal if the pattern recognition involves non-trivial computation.  
+
+Since the optimal computer program of AI is from a discrete hypothesis space where the hypothesis is constructed with characters of programming languages, we will construct a coding hypothesis space. A big challenge is that the  discrete coding hypothesis space is hard to be optimized automatically from mathematical. 
+%% We solve this problem in a human-in-the-loop manner.																																							
+\subsection{Feature Definition}
+In machine learning and pattern recognition, a feature is an individual measurable property or characteristic of a phenomenon\cite{bishop2006pattern}.
+
+\subsection{Rethink Training} 
+
 
 \section{Domain Specifics for Image Classification}
 
@@ -473,7 +498,7 @@ Sasha Rakhlin provides insights from learning theory. Fundamental machine learni
 
 Piotr Indyk provides insights from applied algorithms. The computation is inspired by LSH in the early days.
 
-
+\bibliography{mybib}
 
 
 \end{document}
