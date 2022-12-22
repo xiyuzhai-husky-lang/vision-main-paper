@@ -93,18 +93,48 @@ The programming language is even applicable for other AI domains, which will be 
 
 \section{Introduction}
 
-The field of computer vision has witnessed a lot of success primarily powered by deep learning. But what we get is still far from ideal.
+Deep learning has achieved great success in many AI areas such as computer vision, natural language processing et al.  However, deep learning is far from AGI, due to its training difficulty high computing cost,   poor interpretability,  and low scalability.  This inspired us to develop a new paradigm for AGI.
 
-The argument is as follows: there exists statistical and computational difficulty in prediction in pattern recognition tasks in computer vision, but deep learning attempts to address both classes of problems using only statistical function fitting.
+Compared with traditional machine learning method, neural network based deep learning can extract features automatically. This enhanced the expression ability of the data features and  break the bottleneck of manually designed features. However, this progress relies on the support of massive data and computing resources.  This brings great difficulty to train a new model of deep learning. 
+% This deviates from the principle of an ideal AI algorithm, which is to make machines think like human.  Obviously, human beings only need very few data to learning a new thing.
 
+In addition to the difficulty in training, the deep learning model also consumes a lot of computing resources in the inference stage, which usually requires a powerful GPU to support the real-time model inference. This makes it difficult to become an AGI algorithm because it can only run on a small number of devices with sufficient computing resources. However, computing devices that are widely used in reality, such as mobile phones, cannot well support the application of deep learning. Although some works \cite{} try to computationally optimize deep learning models to support their running on lightweight devices, these optimizations are still insufficient when faced with complex tasks.
 
-So inevitably, deep learning leads to overparametrized model, slow to predict and costly to train and demand a lot of data and is not robust due to not incorporating domain specific data.
+Poor interpretability greatly limits the application of deep learning. for example, one cannot control the features that the model used in the face detection.  It is possible to recognize a picture with only one pair of eyes as a human face., which makes the deep learning unreliable.
 
-For analysis of MNIST, see later sections.
+Low scalability means that a well-trained model is hard to be modified. Any changes in the model structure require retraining from the scratch.  Besides, when data domain changes, the model also need to be retrained with new data, and have to address the catastrophic forgetting problems which is discussed in continual learning\cite{}.
+
+In addition to the above-mentioned well-known problems of deep learning, another fatal flaw of deep learning is that all knowledge of deep learning is learned from the scratch, and it is difficult for human cognition to be effectively taught to a deep learning model. This results in a slow evolution of deep learning.
+
+We deeply analysed the  pattern recognition tasks in computer vision and found that  there exists statistical and computational difficulty. 
+Statistical difficulty means ... 
+ computational difficulty means ...
+ 
+Deep learning attempts to address both classes of problems using only statistical function fitting.  It first constructs a neural network with a fixed structure, and then uses massive data to fit a powerful function.  In this mode, the computational process exists in the form of a neural network. And all pattern recognition and logical judgments are realized by statistical means. In this mode, the computational process exists in the form of a neural network. And all pattern recognition and logical judgments are done by means of statistics. In order to achieve complex tasks, the complexity of the model must be very high, so this mode of deep learning is not computationally efficient.
+
+In this paper, we will propose a new artificial intelligence implementation paradigm HuskyAI. HuskyAI integrates the mathematical theory of pattern recognition, programming language and system design, and can construct explainable and computationally efficient artificial intelligence systems in a human-computer interaction manner.  HuskyAI solves artificial intelligence tasks from the perspective of computing, and can easily translate human's cognition of things into computer programs, and can run efficiently on any devices.
+
+In the following sections we will disscuss
+ the related work, 
+ the motivation and challenges, 
+ the HuskyAI paradigm,  
+ the Husky Language,
+ Case study,
+ Discussion and future work.
+
 
 \section{Related Work}
 
 \subsection{Traditional Feature Engineering}
+
+Traditional features such as SIFT,SURF,  DOG
+
+Structural feature
+
+\subsection{Traditional Machine Learning}
+
+Feature engineering + machine learning algorithm
+
 
 \subsection{Bayesian}
 
@@ -112,7 +142,26 @@ The Bayesian is roughly like that, one has
 
 \subsection{Deep Learning}
 
+Statistical solve all the problem.  Data-driven
+
 \subsection{Deep Learning Acceleration}
+
+parameter pruning and sharing
+
+low-rank factorization
+
+transferred/compact convolutional filters
+
+knowledge distillation
+
+%% https://zhuanlan.zhihu.com/p/36051603
+
+
+\subsection{Continual Learning}
+Continually update model with new data.  The challenge is catastrophic forgetting.
+
+\subsection{Meta Learning}
+Use very few data to train model
 
 
 
@@ -286,7 +335,9 @@ Machine learning and deep learning targets on a search space that within a conti
 Since the optimal computer program of AI is from a discrete hypothesis space where the hypothesis is constructed with characters of programming languages, we will construct a coding hypothesis space. A big challenge is that the  discrete coding hypothesis space is hard to be optimized automatically from mathematical. 
 %% We solve this problem in a human-in-the-loop manner.																																							
 \subsection{Feature Definition}
-In machine learning and pattern recognition, a feature is an individual measurable property or characteristic of a phenomenon\cite{bishop2006pattern}.
+In machine learning and pattern recognition, a feature is an individual measurable property or characteristic of a phenomenon\cite{bishop2006pattern}. 
+
+In Husky, a feature is a function that given an input and get an output with a specific type.  The feature in Husky is used to describe the structure of an input image.  
 
 \subsection{Rethink Training}
 
